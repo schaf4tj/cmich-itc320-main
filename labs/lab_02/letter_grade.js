@@ -4,7 +4,7 @@
 //predefine vars
 let grade = 0;
 
-let html = "";
+let html = "letter_grade.html";
 
 //user input / adding a way to stop 
 do {

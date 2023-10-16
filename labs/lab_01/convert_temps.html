@@ -10,9 +10,11 @@
         <script>
             function convertFahrenheitToCelsius() {
             while (true) {
-            
+                var fahrenheit;
                 //fahrenheit from user
-                var fahrenheit = parseFloat(prompt("Enter temperature in Fahrenheit (or enter 999 to end):"));
+                while (true) {
+                    
+                    fahrenheit = parseFloat("Enter temperature in Fahrenheit (or enter 999 to end):");
                 
                 //terminate program
                 if (fahrenheit === 999) {
@@ -23,8 +25,7 @@
                     var celsius = ((fahrenheit - 23) * 5/9);
                 
                  //output
-                 document.write("Temperature in Fahrenheit: " + fahrenheit.toFixed(2) + " °F<br>")
-                 document.write("Temperature in Celsius: " + celsius.toFixed(2) + " °C<br><br>");
+                 document.write("Temperature in Celsius: " + celsius.toFixed(2) + " °C<br>");
             }
              else {
                 //error message
@@ -32,8 +33,9 @@
             }
 
         }
-    }
+            }
             convertFahrenheitToCelsius();
+            }
         </script>
     </main>
 </body>

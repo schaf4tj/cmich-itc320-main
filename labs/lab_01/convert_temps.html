@@ -8,34 +8,7 @@
     <main>
         <h1>Convert from Fahrenheit to Celsius</h1>
         <script>
-            function convertFahrenheitToCelsius() {
-            while (true) {
-                var fahrenheit;
-                //fahrenheit from user
-                while (true) {
-                    
-                    fahrenheit = parseFloat("Enter temperature in Fahrenheit (or enter 999 to end):");
-                
-                //terminate program
-                if (fahrenheit === 999) {
-          break;
-        }
-            //conversion
-                if (!isNan(fahrenheit)&& fahrenheit >= -100 && fahrenheit <= 212) {
-                    var celsius = ((fahrenheit - 23) * 5/9);
-                
-                 //output
-                 document.write("Temperature in Celsius: " + celsius.toFixed(2) + " °C<br>");
-            }
-             else {
-                //error message
-                 alert("Invalid Entry. Entry must be between -100 and +212 or enter 999 to stop");
-            }
-
-        }
-            }
-            convertFahrenheitToCelsius();
-            }
+           src = "convert_temps.js"
         </script>
     </main>
 </body>

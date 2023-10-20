@@ -6,16 +6,16 @@ document.addEventListener("DOMContentLoaded", () => {
 	$("#calculate").addEventListener("click", processEntry);
 	$("#clear").addEventListener("click", clearFields);
 	// set focus
-	$("#itemPrice").focus();
+	$("#subTotal").focus();
 
 	// event handlers
-	$("#itemPrice").addEventListener("click", clearTextBox);
+	$("#subTotal").addEventListener("click", clearTextBox);
 	$("#taxRate").addEventListener("click", clearTextBox);
 
 	function processEntry() {
 		// get user inputs
-		const itemPrice = parseFloat($("#itemPrice").value);
-		const taxRate = parseFloat($("#taxRate").value);
+		const itemPrice = parseFloat(document.querySelector("#subTotal").value);
+		const taxRate = parseFloat(document.querySelector("#taxRate").value);
 		const salesTaxResult = $("#salesTaxResult");
 		const totalResult = $("#TotalResult");
 	
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		if(isNaN(itemPrice) || itemPrice <= 0 || itemPrice >= 10000) {
 			alert("Invalid input. Enter a valid # less than 10,000.");
 			// set focus
-			$("#itemPrice").focus();
+			$("#subTotal").focus();
 			return;
 		}
 		 if(isNaN(taxRate) || taxRate <= 0 || taxRate >= 12) {
@@ -34,26 +34,24 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	
 		// calculate
-		const salesTax = itemPrice * (taxRate / 100);
-		const total = itemPrice + salesTax;
+		const salesTax = subTotal * (taxRate / 100);
+		const total = subTotal + salesTax;
 	
 		// display results
 		salesTaxResult.value = salesTax.toFixed(2);
 		totalResult.value = total.toFixed(2);
-	
-		// set focus
-		clearFields();
+
 	}
 	
 	function clearFields() {
 		// clear boxes
-		clearTextBox($("#itemPrice"));
+		clearTextBox($("#subTotal"));
 		clearTextBox($("#taxRate"));
 		$("#salesTaxResult").value = "";
 		$("#totalResult").value = "";
 	
 		// set focus
-		$("#itemPrice").focus();
+		$("#subTotal").focus();
 	}
 	
 	function clearTextBox(textBox) {

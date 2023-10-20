@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Income Tax Calculator</title>
+	<title>Sales Tax Calculator</title>
    	<link rel="stylesheet" href="calculate_tax.css">
 </head>
 
@@ -11,13 +11,17 @@
 	<main>
 		<h1>Income Tax Calculator</h1>
 		<div>
-			<label>Enter taxable income:</label>
-			<input type="text" id="income" />
-			<input type="button" value="Calculate" name="calculate" id="calculate" />
+			<label>Enter subtotal and Tax Rate and click "Calculate".</label>
+			<label for="subTotal">Subtotal</label><br>
+			<input type="text" value="Subtotal" name="subTotal" id="subTotal" />
+			<input type="text" value="Tax Rate" name="taxRate" id="taxRate" />
+			<input type="text" value="Sales Tax" name="salesTaxResult" id="salesTaxResult" />
+			<input type="text" value="Total" name="totalResult" id="totalResult" />
+			
 		</div>
 		<div>
-			<label>Income tax owed:</label>
-			<input type="text" id="tax" disabled>
+			<input type="button" value="Calculate" name="calculate" id="calculate" />
+			<input type="button" value="Clear" name="clear" id="clear" />
 		</div>
 	</main>
 	<script src="calculate_tax.js"></script>

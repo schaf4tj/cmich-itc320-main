@@ -2,9 +2,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
     margin: 0 auto;
-    width: 700px;
+    width: 500px;
     border: 3px solid blue;
-    padding: 0 10em 1em;
+    padding: 0 2em 1em;
 }
 h1 {
     color: blue;
@@ -15,7 +15,7 @@ div {
 label {
     display: inline-block;
     width: 11em;
-    text-align: left;
+    text-align: right;
 }
 input {
     margin-left: 1em;
@@ -25,7 +25,12 @@ span {
     color: red;
 }
 
+button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 /*div that's the 2nd child of its parent element (main) */
 div:nth-child(2) {
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
 }

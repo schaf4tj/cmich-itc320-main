@@ -12,17 +12,25 @@
 		<h1>Income Tax Calculator</h1>
 		<div>
 			<label>Enter subtotal and Tax Rate and click "Calculate".</label>
-			<label for="subTotal">Subtotal</label><br>
-			<input type="text" id="subTotal" />
-			<label for="taxRate">Tax Rate</label><br>
-			<input type="text" id="taxRate" />
-			<label for="salesTaxResult">Sales Tax</label><br>
-			<input type="text" id="salesTaxResult" />
-			<label for="totalResult">Total</label><br>
-			<input type="text" id="totalResult" />
-			
 		</div>
 		<div>
+			<label>Subtotal:</label>
+			<input type="text" id="subtotal" />
+		</div>
+		<div>
+			<label>Tax Rate:</label>
+			<input type="text" id="tax">
+		</div>
+		<div>
+			<label>Sales Tax:</label>
+			<input type="text" id="sales_tax" disabled>
+		</div>
+		<div>
+			<label>Total:</label>
+			<input type="text" id="total" disabled>
+		</div>
+		<div>
+			<label>&nbsp;</label>
 			<input type="button" value="Calculate" name="calculate" id="calculate" />
 			<input type="button" value="Clear" name="clear" id="clear" />
 		</div>

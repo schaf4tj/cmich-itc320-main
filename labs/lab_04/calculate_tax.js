@@ -4,57 +4,74 @@ const $ = selector => document.querySelector(selector);
 document.addEventListener("DOMContentLoaded", () => {
 	// add event handlers
 	$("#calculate").addEventListener("click", processEntry);
-	$("#clear").addEventListener("click", clearFields);
+	$("#clear").addEventListener("click", clearButton);
+	$("#subtotal").addEventListener("click", clearSubtotal);
+	$("#tax").addEventListener("click", clearTax);
+
+});
+
 	// set focus
-	$("#subTotal").focus();
-
-	// event handlers
-	$("#subTotal").addEventListener("click", clearTextBox);
-	$("#taxRate").addEventListener("click", clearTextBox);
-
+	$("#subtotal").focus();
+	
 	function processEntry() {
 		// get user inputs
-		const itemPrice = parseFloat(document.querySelector("#subTotal").value);
-		const taxRate = parseFloat(document.querySelector("#taxRate").value);
-		const salesTaxResult = $("#salesTaxResult");
-		const totalResult = $("#TotalResult");
+		const subtotal = parseFloat(document.querySelector("#subtotal").value);
+		const tax = parseFloat(document.querySelector("#tax").value);
+		const sales_tax_html = $("#sales_tax");
+		const total_html = $("#total");
 	
+		// set focus back 
+		$("#subtotal").focus();
+
 		// data validation
-		if(isNaN(itemPrice) || itemPrice <= 0 || itemPrice >= 10000) {
-			alert("Invalid input. Enter a valid # less than 10,000.");
+		if(isNaN(subtotal) || subtotal <= 0 || subtotal >= 10000) {
+			alert("Invalid input. Input must be > 0 & < 10000");
 			// set focus
-			$("#subTotal").focus();
+			$("#subtotal").focus();
 			return;
 		}
-		 if(isNaN(taxRate) || taxRate <= 0 || taxRate >= 12) {
-			alert("Invalid input. Enter a valid # less than 12.");
+
+		// data validation
+		 if(isNaN(tax) || tax <= 0 || tax >= 12) {
+			alert("Invalid input. Input must be > 0 & < 12");
 			// set focus
-			$("#taxRate").focus();
+			$("#tax").focus();
 			return;
 		}
 	
 		// calculate
-		const salesTax = subTotal * (taxRate / 100);
-		const total = subTotal + salesTax;
+		const salesTax = subtotal * (tax / 100);
+		const total = subtotal + salesTax;
 	
 		// display results
-		salesTaxResult.value = salesTax.toFixed(2);
-		totalResult.value = total.toFixed(2);
+		sales_tax_html.value = salesTax.toFixed(2);
+		total_html.value = total.toFixed(2);
 
 	}
 	
-	function clearFields() {
-		// clear boxes
-		clearTextBox($("#subTotal"));
-		clearTextBox($("#taxRate"));
-		$("#salesTaxResult").value = "";
-		$("#totalResult").value = "";
-	
-		// set focus
-		$("#subTotal").focus();
-	}
-	
+	// clears the field of a textbox
 	function clearTextBox(textBox) {
 		textBox.value = "";
 	}
-});
+	
+	// clears subtotal
+	function clearSubtotal() {
+		clearTextBox($("#subtotal"));
+	}
+
+	// clears tax
+	function clearTax() {
+		clearTextBox($("#tax"));
+	}
+
+	// clears on click of button
+	function clearButton() {
+		clearTextBox($("#subtotal"));
+		clearTextBox($("#tax"));
+		$("#sales_tax").value = "";
+		$("#total").value = "";
+
+		// set focus
+		$("#subtotal").focus();
+	}
+

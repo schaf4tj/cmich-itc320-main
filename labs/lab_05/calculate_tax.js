@@ -5,42 +5,53 @@ document.addEventListener("DOMContentLoaded", () => {
 	// add event handlers
 	$("#calculate").addEventListener("click", processEntry);
 
+});
+
 	function processEntry() {
-		const entryElement = $("#entry");
-		const resultElement = $("#result");
-		const entryValue = parseFloat(entryElement.value);
-	
-		entryElement.focus();
-	
-		if (isNaN(entryValue) || entryValue <= 0) {
-			resultElement.value = "Invalid input. Enter a # < 0.";
-		} else {
-			const taxAmount = calculateTax(entryValue);
-			resultElement.value = "Tax Amount: $" + taxAmount.toFixed(2);
+		// textbox values
+		const income = parseInt($("#income").value);
+		const tax_html = $("#tax");
+		// validation
+		if (isNaN(income) || income <= 0) {
+			// error msg and set focus
+			alert("Invalid input. Enter a # > 0.");
+			$("#income").focus();
 		}
+		
+		else {
+			// calculation
+			const tax = calculateTax(income);
+			// display result
+			tax_html.value = tax.toFixed(2);
+		}
+		// set focus
+		$("#income").focus();
 	}
 
 	function calculateTax(income) {
-		income = Math.floor(income);
-
-		const brackets = [9875, 40125, 85525, 163300, 207350, 518400];
-		const rates = [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37];
-
-		let taxAmount = 0;
-		let remainingIncome = income;
-
-		for (let i = 0; i < brackets.length; i++) {
-			if(remainingIncome <= 0) {
-				break;
-			}
-
-			const taxableIncome = Math.min(remainingIncome, brackets[i]);
-			taxAmount += taxableIncome * rates[i];
-			remainingIncome -= taxableIncome;
+		// if statements for calculations of tax brackets
+		if(income > 0 && income <= 9875) {
+			income = 0 + (income * .10);
 		}
-
-		taxAmount = Math.round(taxAmount * 100) / 100;
-
-		return taxAmount;
+		else if(income > 9875 && income <= 40125) {
+			income = 987.50 + ((income - 9875) * .12);
+		}
+		else if(income > 40125 && income <= 85525) {
+			income = 4617.5 + ((income - 40125) * .22);
+		}
+		else if(income > 85525 && income <= 163300) {
+			income = 14605.5 + ((income - 85525) * .24);
+		}
+		else if(income > 163300 && income <= 207350) {
+			income = 33271.5 + ((income - 163300) * .32);
+		}
+		else if(income > 207350 && income <= 518400) {
+			income = 47367.59 + ((income - 207350) * .35);
+		}
+		else if(income > 518500) {
+			income = 156325 + ((income - 518500) * .37);
+		}
+		// return income 
+		return income;
 	}
-});
+

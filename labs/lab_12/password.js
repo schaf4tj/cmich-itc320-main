@@ -15,7 +15,25 @@ $(document).ready( () => {
         $("#password").val( "" ); // clear previous entry
     
         const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-+!@";
+        const passwordLength = $("#num").val().trim();
         
+        // Check if the entered value is a valid number
+        if (!/^\d+$/.test(passwordLength)) {
+            alert("Please enter a valid number.");
+            return;
+        }
+        // Convert the entered value to a number
+        const length = parseInt(passwordLength);
+
+        // Generate the password
+        let password = "";
+        for (let i = 0; i < length; i++) {
+            const randomIndex = getRandomNumber(chars.length - 1);
+            password += chars.charAt(randomIndex);
+        }
+
+        // Display the generated password
+        $("#password").val(password);
     }); // end click()
     
     $("#clear").click( () => {

@@ -11,7 +11,15 @@
 	<h1>Reservation Request</h1>
 	<form action="response.html" method="get"
     	name="reservation_form" id="reservation_form">
-		<fieldset>
+		
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">General Information</a></li>
+				<li><a href="#tabs-2">Preferences</a></li>
+				<li><a href="#tabs-3">Contact Information</a></li>
+			</ul>
+		
+				<div id="tabs-1"><fieldset>
         	<legend>General Information</legend>
         	<div>
 				<label for="arrival_date">Arrival date:</label>
@@ -42,8 +50,10 @@
 					<option value="4">4</option>        		        		        		
 				</select>
 			</div>     	
-		</fieldset>
-		<fieldset>
+		</fieldset></div>
+
+
+		<div id="tabs-2"></div><fieldset>
         	<legend>Preferences</legend>
         	<div>
 				<label>Room type:</label>
@@ -59,8 +69,10 @@
 			<div>
 				<input type="checkbox" name="smoking" id="smoking">Smoking
 			</div>
-		</fieldset>		
-		<fieldset>
+		</fieldset></div>
+		
+		
+		<div id="tabs-3"></div><fieldset>
     		<legend>Contact Information</legend>
     		<div>
 				<label for="name">Name:</label>
@@ -77,8 +89,10 @@
 				<input type="text" name="phone" id="phone" placeholder="999-999-9999">
 				<span>*</span>
 			</div>
-		</fieldset>
-    	<fieldset>
+		</fieldset></div>
+    	
+		
+		<fieldset>
 			<div>
 				<input type="button" id="policies" value="View Cancellation Policies">
 				<input type="submit" id="submit" value="Submit Request">
@@ -95,5 +109,10 @@
 	</form>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="reservation.js"></script>
+	<script>
+		$(document).ready( () => 
+			$("#tabs").tabs()
+)
+	</script>
 </body>
 </html>
